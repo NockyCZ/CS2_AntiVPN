@@ -1,4 +1,4 @@
-# CS2_AntiVPN
+# CS2 AntiVPN & Country blocker
 An Anti-VPN & Country Blocker plugin for [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp). It is also possible to set up a whitelist for specific steamid64, on which VPN or Country blocking will not take effect.
 
 ### Configuration in ```/plugins/AntiVPN/antivpn_config.json```
