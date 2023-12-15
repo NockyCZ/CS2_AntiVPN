@@ -3,10 +3,10 @@ using Newtonsoft.Json.Linq;
 namespace AntiVPN;
 public static class Config
 {
-    public static JObject? JsonConfigData { get; private set; }
+	public static JObject? JsonConfigData { get; private set; }
 	public static List<string>? SteamidWhitelist { get; private set; }
-    public static List<string>? BlockedCountries { get; private set; }
-    public static void CreateOrLoadConfig(string filepath)
+	public static List<string>? BlockedCountries { get; private set; }
+	public static void CreateOrLoadConfig(string filepath)
 	{
 		if (!File.Exists(filepath))
 		{
@@ -14,8 +14,8 @@ public static class Config
 			{
 				["AntiVPN"] = new JObject
 				{
-                    ["steamid_whitelist"] = new JArray { "76561198429950772", "76561198808392634" },
-                    ["blocked_countries"] = new JArray { "RU", "CN" }
+                    			["steamid_whitelist"] = new JArray { "76561198429950772", "76561198808392634" },
+                    			["blocked_countries"] = new JArray { "RU", "CN" }
 				}
 			};
 			File.WriteAllText(filepath, exampleData.ToString());
@@ -29,9 +29,9 @@ public static class Config
 		}
 
 		JArray steamidWhitelistArray = (JArray)JsonConfigData["AntiVPN"]!["steamid_whitelist"]!;
-        SteamidWhitelist = steamidWhitelistArray.ToObject<List<string>>();
+        	SteamidWhitelist = steamidWhitelistArray.ToObject<List<string>>();
 
 		JArray blockedCountriesArray = (JArray)JsonConfigData["AntiVPN"]!["blocked_countries"]!;
-        BlockedCountries = blockedCountriesArray.ToObject<List<string>>();
+        	BlockedCountries = blockedCountriesArray.ToObject<List<string>>();
 	}
 }
