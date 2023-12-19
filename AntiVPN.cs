@@ -18,24 +18,23 @@ public class AntiVPN : BasePlugin
     }
     [GameEventHandler]
     private HookResult OnPlayerConnectFull(EventPlayerConnectFull @event, GameEventInfo info)
-	{
-		CCSPlayerController player = @event.Userid;
+    {
+   	CCSPlayerController player = @event.Userid;
 
         if (player == null || !player.IsValid || player.IsBot || player.IsHLTV || player.AuthorizedSteamID == null) 
             return HookResult.Continue;
 
-		AddTimer(0.5f, () => CheckPlayerIP(player));
-
-		return HookResult.Continue;
-	}
+   	AddTimer(0.5f, () => CheckPlayerIP(player));
+	return HookResult.Continue;
+    }
 
     [ConsoleCommand("css_antivpn_reload")]
-	[CommandHelper(whoCanExecute: CommandUsage.SERVER_ONLY)]
-	public void OnReloadCommand(CCSPlayerController caller, CommandInfo command)
-	{
-		Config.CreateOrLoadConfig(ModuleDirectory + "/antivpn_config.json");
+    [CommandHelper(whoCanExecute: CommandUsage.SERVER_ONLY)]
+    public void OnReloadCommand(CCSPlayerController caller, CommandInfo command)
+    {
+    	Config.CreateOrLoadConfig(ModuleDirectory + "/antivpn_config.json");
         command.ReplyToCommand("The configuration file \"antivpn_config.json\" reloaded.");
-	}
+    }
     public void CheckPlayerIP(CCSPlayerController player)
     {
         string ipAddress = player!.IpAddress!.Split(":")[0];
